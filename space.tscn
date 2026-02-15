@@ -1,0 +1,285 @@
+[gd_scene load_steps=14 format=3 uid="uid://cdps5pk14doe8"]
+
+[ext_resource type="Texture2D" uid="uid://bydbdfx0wrgyn" path="res://Parts/sphere1.png" id="1_rxlph"]
+[ext_resource type="Texture2D" uid="uid://c8f2wsfbpe866" path="res://Parts/noise19.png" id="2_ulv8f"]
+[ext_resource type="Texture2D" uid="uid://bn1d0g3g6ud0" path="res://Parts/noise06.png" id="3_w5eul"]
+[ext_resource type="Texture2D" uid="uid://gh5r1lgjgxse" path="res://Parts/noise02.png" id="4_4fhbr"]
+[ext_resource type="Texture2D" uid="uid://clwvgwfft2wn3" path="res://Player/player_b_m.png" id="4_b5fhv"]
+[ext_resource type="Script" uid="uid://c7pkb4t5xdwib" path="res://player.gd" id="4_ulv8f"]
+[ext_resource type="Texture2D" uid="uid://bpq65canuvgvg" path="res://Parts/noise10.png" id="5_1vxpe"]
+[ext_resource type="Texture2D" uid="uid://4gitaofl5a5q" path="res://Parts/noise04.png" id="6_1vxpe"]
+[ext_resource type="Texture2D" uid="uid://b68vo56em5xte" path="res://Parts/noise26.png" id="7_4hog4"]
+[ext_resource type="Texture2D" uid="uid://dm0y2nmvr7se8" path="res://DustSmoke.png" id="10_4hog4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4fhbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_b5fhv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_w5eul"]
+offsets = PackedFloat32Array(0, 0.10273973, 0.47945204, 0.80136985, 1)
+colors = PackedColorArray(0, 0.8156863, 1, 1, 0.92156863, 0.9019608, 0, 1, 0.9529412, 0.40392157, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5fhv"]
+
+[node name="Space" type="Node2D"]
+
+[node name="Planet" type="Node2D" parent="."]
+
+[node name="Sphere1" type="Sprite2D" parent="Planet"]
+modulate = Color(0, 0.6392157, 0.38431373, 1)
+texture = ExtResource("1_rxlph")
+
+[node name="Noise19" type="Sprite2D" parent="Planet"]
+modulate = Color(0.7045402, 0.5770617, 0.17410356, 1)
+texture = ExtResource("2_ulv8f")
+
+[node name="Noise06" type="Sprite2D" parent="Planet"]
+modulate = Color(1, 1, 1, 0.29803923)
+texture = ExtResource("3_w5eul")
+
+[node name="Planet2" type="Node2D" parent="."]
+position = Vector2(6806, -5547)
+
+[node name="Sphere1" type="Sprite2D" parent="Planet2"]
+modulate = Color(0.83395326, 0.3861469, 0.17883787, 1)
+texture = ExtResource("1_rxlph")
+
+[node name="Noise19" type="Sprite2D" parent="Planet2"]
+modulate = Color(0.48025167, 0.5947156, 0.7914907, 1)
+texture = ExtResource("4_4fhbr")
+
+[node name="Noise06" type="Sprite2D" parent="Planet2"]
+modulate = Color(1, 1, 1, 0.29803923)
+texture = ExtResource("5_1vxpe")
+
+[node name="Planet3" type="Node2D" parent="."]
+position = Vector2(13000, 560)
+
+[node name="Sphere1" type="Sprite2D" parent="Planet3"]
+modulate = Color(0.36622435, 0.61715436, 0.01508591, 1)
+texture = ExtResource("1_rxlph")
+
+[node name="Noise19" type="Sprite2D" parent="Planet3"]
+modulate = Color(0.16430262, 0.6532953, 0.7849935, 1)
+texture = ExtResource("6_1vxpe")
+
+[node name="Noise06" type="Sprite2D" parent="Planet3"]
+modulate = Color(1, 1, 1, 0.29803923)
+texture = ExtResource("7_4hog4")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+scale = Vector2(0.385, 0.385)
+script = ExtResource("4_ulv8f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+z_index = 1
+scale = Vector2(1.97, 1.97)
+sprite_frames = SubResource("SpriteFrames_4fhbr")
+animation = &"idle"
+frame_progress = 0.65742207
+
+[node name="Engine Effects" type="Node2D" parent="Player"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/Engine Effects"]
+position = Vector2(-1, 34)
+amount = 50
+texture = ExtResource("10_4hog4")
+lifetime = 0.7
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_w5eul")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Player/Engine Effects"]
+position = Vector2(-1, 34)
+amount = 50
+texture = ExtResource("10_4hog4")
+lifetime = 0.7
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_w5eul")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="Player/Engine Effects"]
+position = Vector2(-1, 34)
+amount = 50
+texture = ExtResource("10_4hog4")
+lifetime = 0.7
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_w5eul")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="Player/Engine Effects"]
+position = Vector2(-1, 34)
+amount = 50
+texture = ExtResource("10_4hog4")
+lifetime = 0.7
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_w5eul")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="Player/Engine Effects"]
+position = Vector2(-1, 34)
+amount = 50
+texture = ExtResource("10_4hog4")
+lifetime = 0.7
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_w5eul")
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="Player/Engine Effects"]
+position = Vector2(-1, 34)
+amount = 50
+texture = ExtResource("10_4hog4")
+lifetime = 0.7
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_w5eul")
+
+[node name="CPUParticles2D7" type="CPUParticles2D" parent="Player/Engine Effects"]
+position = Vector2(-1, 34)
+amount = 50
+texture = ExtResource("10_4hog4")
+lifetime = 0.7
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_w5eul")
+
+[node name="CPUParticles2D8" type="CPUParticles2D" parent="Player/Engine Effects"]
+position = Vector2(-1, 34)
+amount = 50
+texture = ExtResource("10_4hog4")
+lifetime = 0.7
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_w5eul")
+
+[node name="CPUParticles2D9" type="CPUParticles2D" parent="Player/Engine Effects"]
+position = Vector2(-1, 34)
+amount = 50
+texture = ExtResource("10_4hog4")
+lifetime = 0.7
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_w5eul")
+
+[node name="CPUParticles2D10" type="CPUParticles2D" parent="Player/Engine Effects"]
+position = Vector2(-1, 34)
+amount = 50
+texture = ExtResource("10_4hog4")
+lifetime = 0.7
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_w5eul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_b5fhv")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 50.0

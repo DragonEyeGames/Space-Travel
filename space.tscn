@@ -1,15 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdps5pk14doe8"]
+[gd_scene load_steps=18 format=3 uid="uid://cdps5pk14doe8"]
 
-[ext_resource type="Texture2D" uid="uid://bydbdfx0wrgyn" path="res://Parts/sphere1.png" id="1_rxlph"]
-[ext_resource type="Texture2D" uid="uid://c8f2wsfbpe866" path="res://Parts/noise19.png" id="2_ulv8f"]
-[ext_resource type="Texture2D" uid="uid://bn1d0g3g6ud0" path="res://Parts/noise06.png" id="3_w5eul"]
-[ext_resource type="Texture2D" uid="uid://gh5r1lgjgxse" path="res://Parts/noise02.png" id="4_4fhbr"]
+[ext_resource type="Script" uid="uid://cyxkf8idr8hub" path="res://spaceRandomizer.gd" id="1_myilm"]
+[ext_resource type="PackedScene" uid="uid://56jy1f8ocvl2" path="res://planet.tscn" id="2_1vxpe"]
 [ext_resource type="Texture2D" uid="uid://clwvgwfft2wn3" path="res://Player/player_b_m.png" id="4_b5fhv"]
 [ext_resource type="Script" uid="uid://c7pkb4t5xdwib" path="res://player.gd" id="4_ulv8f"]
-[ext_resource type="Texture2D" uid="uid://bpq65canuvgvg" path="res://Parts/noise10.png" id="5_1vxpe"]
-[ext_resource type="Texture2D" uid="uid://4gitaofl5a5q" path="res://Parts/noise04.png" id="6_1vxpe"]
-[ext_resource type="Texture2D" uid="uid://b68vo56em5xte" path="res://Parts/noise26.png" id="7_4hog4"]
+[ext_resource type="Texture2D" uid="uid://bf1yj4eusxqs1" path="res://Destination.png" id="9_myilm"]
 [ext_resource type="Texture2D" uid="uid://dm0y2nmvr7se8" path="res://DustSmoke.png" id="10_4hog4"]
+[ext_resource type="Script" uid="uid://bovhedej5g57c" path="res://destination.gd" id="12_dhr8q"]
+[ext_resource type="Script" uid="uid://cprc2sq25l2om" path="res://hud.gd" id="13_betvx"]
+[ext_resource type="Script" uid="uid://b3p2m04wk7cb5" path="res://darkness.gd" id="14_7ltla"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4fhbr"]
 animations = [{
@@ -28,64 +27,84 @@ colors = PackedColorArray(0, 0.8156863, 1, 1, 0.92156863, 0.9019608, 0, 1, 0.952
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5fhv"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ltla"]
+radius = 54.61258
+
+[sub_resource type="Animation" id="Animation_y7rfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wun8x"]
+resource_name = "conceal"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ap0gv"]
+resource_name = "reveal"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ocht2"]
+_data = {
+&"RESET": SubResource("Animation_y7rfp"),
+&"conceal": SubResource("Animation_wun8x"),
+&"reveal": SubResource("Animation_ap0gv")
+}
+
 [node name="Space" type="Node2D"]
+script = ExtResource("1_myilm")
+scene_to_spawn = ExtResource("2_1vxpe")
+spawn_count = 6
+min_distance = 4000.0
 
-[node name="Planet" type="Node2D" parent="."]
-
-[node name="Sphere1" type="Sprite2D" parent="Planet"]
-modulate = Color(0, 0.6392157, 0.38431373, 1)
-texture = ExtResource("1_rxlph")
-
-[node name="Noise19" type="Sprite2D" parent="Planet"]
-modulate = Color(0.7045402, 0.5770617, 0.17410356, 1)
-texture = ExtResource("2_ulv8f")
-
-[node name="Noise06" type="Sprite2D" parent="Planet"]
-modulate = Color(1, 1, 1, 0.29803923)
-texture = ExtResource("3_w5eul")
-
-[node name="Planet2" type="Node2D" parent="."]
-position = Vector2(6806, -5547)
-
-[node name="Sphere1" type="Sprite2D" parent="Planet2"]
-modulate = Color(0.83395326, 0.3861469, 0.17883787, 1)
-texture = ExtResource("1_rxlph")
-
-[node name="Noise19" type="Sprite2D" parent="Planet2"]
-modulate = Color(0.48025167, 0.5947156, 0.7914907, 1)
-texture = ExtResource("4_4fhbr")
-
-[node name="Noise06" type="Sprite2D" parent="Planet2"]
-modulate = Color(1, 1, 1, 0.29803923)
-texture = ExtResource("5_1vxpe")
-
-[node name="Planet3" type="Node2D" parent="."]
-position = Vector2(13000, 560)
-
-[node name="Sphere1" type="Sprite2D" parent="Planet3"]
-modulate = Color(0.36622435, 0.61715436, 0.01508591, 1)
-texture = ExtResource("1_rxlph")
-
-[node name="Noise19" type="Sprite2D" parent="Planet3"]
-modulate = Color(0.16430262, 0.6532953, 0.7849935, 1)
-texture = ExtResource("6_1vxpe")
-
-[node name="Noise06" type="Sprite2D" parent="Planet3"]
-modulate = Color(1, 1, 1, 0.29803923)
-texture = ExtResource("7_4hog4")
-
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("darkness")]
+position = Vector2(8658, 2935.9998)
 scale = Vector2(0.385, 0.385)
 script = ExtResource("4_ulv8f")
+darkness = NodePath("../Darkness")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 z_index = 1
 scale = Vector2(1.97, 1.97)
 sprite_frames = SubResource("SpriteFrames_4fhbr")
 animation = &"idle"
-frame_progress = 0.65742207
+frame_progress = 0.95276904
 
 [node name="Engine Effects" type="Node2D" parent="Player"]
+modulate = Color(1, 1, 1, 0.45490196)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/Engine Effects"]
 position = Vector2(-1, 34)
@@ -280,6 +299,133 @@ color_ramp = SubResource("Gradient_w5eul")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_b5fhv")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Area2D" type="Area2D" parent="Player"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(0.002536526, -0.00015853287)
+shape = SubResource("CircleShape2D_7ltla")
+
+[node name="Destination" type="Sprite2D" parent="." node_paths=PackedStringArray("player", "target")]
+position = Vector2(-362.99997, -1.9999999)
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("9_myilm")
+script = ExtResource("12_dhr8q")
+player = NodePath("../Player")
+target = NodePath("")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Destination"]
+offset_left = -85.18527
+offset_top = 77.77778
+offset_right = 81.481476
+offset_bottom = 117.77778
+theme_override_font_sizes/normal_font_size = 29
+text = "500 M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("13_betvx")
+
+[node name="Mission" type="ColorRect" parent="HUD"]
+visible = false
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 257.0
+offset_bottom = 146.0
+mouse_filter = 2
+color = Color(0.47007585, 0.47007585, 0.47007585, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/Mission"]
+layout_mode = 0
+offset_right = 246.0
+offset_bottom = 139.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 21
+text = "Head to Dravon-5 to get your mission."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Border" type="ColorRect" parent="HUD/Mission"]
+z_index = -1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 251.0
+offset_bottom = 143.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="HUD/Mission"]
+layout_mode = 0
+offset_left = 228.99998
+offset_top = 1.0
+offset_right = 251.99998
+offset_bottom = 25.0
+scale = Vector2(0.685, 0.685)
+theme_override_font_sizes/font_size = 11
+text = "X"
+
+[node name="Open" type="ColorRect" parent="HUD"]
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 29.0
+offset_bottom = 146.0
+mouse_filter = 2
+color = Color(0.47058824, 0.47058824, 0.47058824, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HUD/Open"]
+z_index = -1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 143.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/Open"]
+layout_mode = 0
+offset_right = 19.0
+offset_bottom = 139.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 27
+text = ">"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="HUD/Open"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 143.0
+flat = true
+
+[node name="Darkness" type="CanvasLayer" parent="."]
+script = ExtResource("14_7ltla")
+
+[node name="ColorRect" type="ColorRect" parent="Darkness"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shifter" type="AnimationPlayer" parent="Darkness"]
+libraries = {
+&"": SubResource("AnimationLibrary_ocht2")
+}
+autoplay = "reveal"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.03, 0.03)
 position_smoothing_enabled = true
 position_smoothing_speed = 50.0
+
+[connection signal="area_entered" from="Player/Area2D" to="Player" method="land"]
+[connection signal="pressed" from="HUD/Mission/Button" to="HUD" method="_on_button_pressed"]
+[connection signal="pressed" from="HUD/Open/Button" to="HUD" method="open"]

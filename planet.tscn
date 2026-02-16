@@ -1,0 +1,62 @@
+[gd_scene load_steps=32 format=3 uid="uid://56jy1f8ocvl2"]
+
+[ext_resource type="Texture2D" uid="uid://bydbdfx0wrgyn" path="res://Parts/sphere1.png" id="1_a75xc"]
+[ext_resource type="Script" uid="uid://c853sdb5aegd1" path="res://planet.gd" id="1_x6khl"]
+[ext_resource type="Texture2D" uid="uid://dhewm6fbps2x6" path="res://Parts/noise00.png" id="2_ko8lj"]
+[ext_resource type="Texture2D" uid="uid://4gitaofl5a5q" path="res://Parts/noise04.png" id="2_x6khl"]
+[ext_resource type="Texture2D" uid="uid://b68vo56em5xte" path="res://Parts/noise26.png" id="3_x32po"]
+[ext_resource type="Texture2D" uid="uid://b717vpiiml6cp" path="res://Parts/noise01.png" id="3_yrptl"]
+[ext_resource type="Texture2D" uid="uid://gh5r1lgjgxse" path="res://Parts/noise02.png" id="4_r248y"]
+[ext_resource type="Texture2D" uid="uid://c58i8acapx25j" path="res://Parts/noise03.png" id="5_tmtqv"]
+[ext_resource type="Texture2D" uid="uid://5cckqgwlwde3" path="res://Parts/noise05.png" id="7_vqs71"]
+[ext_resource type="Texture2D" uid="uid://bn1d0g3g6ud0" path="res://Parts/noise06.png" id="8_s2jac"]
+[ext_resource type="Texture2D" uid="uid://bd5ngsg210bud" path="res://Parts/noise07.png" id="9_uktax"]
+[ext_resource type="Texture2D" uid="uid://dadlrmwi7speh" path="res://Parts/noise08.png" id="10_xalvv"]
+[ext_resource type="Texture2D" uid="uid://cqnpfh5tdvheq" path="res://Parts/noise09.png" id="11_1y5wn"]
+[ext_resource type="Texture2D" uid="uid://bpq65canuvgvg" path="res://Parts/noise10.png" id="12_7qi5d"]
+[ext_resource type="Texture2D" uid="uid://1gljqkmfufui" path="res://Parts/noise11.png" id="13_v6smi"]
+[ext_resource type="Texture2D" uid="uid://dgb6d24nx5gbd" path="res://Parts/noise12.png" id="14_tpvap"]
+[ext_resource type="Texture2D" uid="uid://cjvu4eiviwfrq" path="res://Parts/noise13.png" id="15_rmjvt"]
+[ext_resource type="Texture2D" uid="uid://20yql7q7106h" path="res://Parts/noise14.png" id="16_6a18x"]
+[ext_resource type="Texture2D" uid="uid://cu6plw7qnmoxv" path="res://Parts/noise15.png" id="17_j538t"]
+[ext_resource type="Texture2D" uid="uid://dngf2govffr4x" path="res://Parts/noise16.png" id="18_hf35q"]
+[ext_resource type="Texture2D" uid="uid://7cats7cpp28u" path="res://Parts/noise17.png" id="19_8o148"]
+[ext_resource type="Texture2D" uid="uid://cge4kyk46daa6" path="res://Parts/noise18.png" id="20_iixi2"]
+[ext_resource type="Texture2D" uid="uid://c8f2wsfbpe866" path="res://Parts/noise19.png" id="21_6w2ve"]
+[ext_resource type="Texture2D" uid="uid://m0bxeumnhvo1" path="res://Parts/noise20.png" id="22_e2wx1"]
+[ext_resource type="Texture2D" uid="uid://0lkgijyahdff" path="res://Parts/noise21.png" id="23_bqpc7"]
+[ext_resource type="Texture2D" uid="uid://6wowf8r1mf6s" path="res://Parts/noise22.png" id="24_52usj"]
+[ext_resource type="Texture2D" uid="uid://c17rjabjytyl0" path="res://Parts/noise23.png" id="25_h3vcf"]
+[ext_resource type="Texture2D" uid="uid://dlg5drrn2yro" path="res://Parts/noise24.png" id="26_8dnqk"]
+[ext_resource type="Texture2D" uid="uid://h2d0g7t4eily" path="res://Parts/noise25.png" id="27_adowp"]
+[ext_resource type="Texture2D" uid="uid://cg4px5ur08irb" path="res://Parts/noise27.png" id="29_oddui"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_betvx"]
+radius = 511.03522
+
+[node name="Planet" type="Node2D"]
+script = ExtResource("1_x6khl")
+noiseParts = [ExtResource("2_ko8lj"), ExtResource("3_yrptl"), ExtResource("4_r248y"), ExtResource("5_tmtqv"), ExtResource("2_x6khl"), ExtResource("7_vqs71"), ExtResource("8_s2jac"), ExtResource("9_uktax"), ExtResource("10_xalvv"), ExtResource("11_1y5wn"), ExtResource("12_7qi5d"), ExtResource("13_v6smi"), ExtResource("14_tpvap"), ExtResource("15_rmjvt"), ExtResource("16_6a18x"), ExtResource("17_j538t"), ExtResource("18_hf35q"), ExtResource("19_8o148"), ExtResource("20_iixi2"), ExtResource("21_6w2ve"), ExtResource("22_e2wx1"), ExtResource("23_bqpc7"), ExtResource("24_52usj"), ExtResource("25_h3vcf"), ExtResource("26_8dnqk"), ExtResource("27_adowp"), ExtResource("3_x32po"), ExtResource("29_oddui")]
+toxicPart1 = Array[Color]([Color(0.29846168, 0.07001168, 0.38154456, 1), Color(0.25419158, 0.08977518, 0.18997383, 1), Color(0.20970887, 0.14321625, 0.08217097, 1), Color(0.135165, 0.21376985, 0.2534702, 1)])
+toxicPart2 = Array[Color]([Color(0.7019608, 0.16862746, 0.5882353, 1), Color(0.15686275, 0.33333334, 0.07450981, 1), Color(0.98060006, 0, 0.45267612, 1), Color(0.6117647, 0.37254903, 1, 1)])
+radioactivePart1 = Array[Color]([Color(0, 0.46288544, 0, 1), Color(0, 0.75686276, 0.53333336, 1), Color(0.28931263, 0.45445287, 0.2608125, 1), Color(0.16862746, 0.41960785, 0.16862746, 1)])
+radioactivePart2 = Array[Color]([Color(0.2521401, 0.45202255, 7.70092e-07, 1), Color(0, 0.7348627, 0, 1), Color(0.44313726, 0.5921569, 0.09019608, 1), Color(0, 0.80784315, 0.17254902, 1)])
+
+[node name="Base" type="Sprite2D" parent="."]
+modulate = Color(0.36622435, 0.61715436, 0.01508591, 1)
+texture = ExtResource("1_a75xc")
+
+[node name="Land" type="Sprite2D" parent="."]
+modulate = Color(0.16430262, 0.6532953, 0.7849935, 1)
+texture = ExtResource("2_x6khl")
+
+[node name="Clouds" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.29803923)
+texture = ExtResource("3_x32po")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_betvx")

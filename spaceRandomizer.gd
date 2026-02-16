@@ -48,3 +48,4 @@ func spawn_in_circle():
 			newMini.position=pos/100
 			#newMini.position=Vector2.ZERO
 			newMini.visible=true
+			newMini.planet=instance

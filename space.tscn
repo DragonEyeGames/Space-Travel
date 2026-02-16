@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdps5pk14doe8"]
+[gd_scene load_steps=21 format=3 uid="uid://cdps5pk14doe8"]
 
 [ext_resource type="Script" uid="uid://cyxkf8idr8hub" path="res://spaceRandomizer.gd" id="1_myilm"]
 [ext_resource type="PackedScene" uid="uid://56jy1f8ocvl2" path="res://planet.tscn" id="2_1vxpe"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bdi717iuy6oqo" path="res://MapCircle.png" id="9_4hog4"]
 [ext_resource type="Texture2D" uid="uid://bf1yj4eusxqs1" path="res://Destination.png" id="9_myilm"]
 [ext_resource type="Texture2D" uid="uid://dm0y2nmvr7se8" path="res://DustSmoke.png" id="10_4hog4"]
+[ext_resource type="Script" uid="uid://emwqgb31kdg8" path="res://miniPlanet.gd" id="10_dhr8q"]
 [ext_resource type="Texture2D" uid="uid://cafn2nql4y28l" path="res://HappyFace.png" id="10_myilm"]
 [ext_resource type="Script" uid="uid://bovhedej5g57c" path="res://destination.gd" id="12_dhr8q"]
 [ext_resource type="Script" uid="uid://cprc2sq25l2om" path="res://hud.gd" id="13_betvx"]
@@ -313,7 +314,6 @@ shape = SubResource("CircleShape2D_7ltla")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2(2.5974026, 2.5974026)
 ignore_rotation = false
-zoom = Vector2(0.02, 0.02)
 position_smoothing_enabled = true
 position_smoothing_speed = 50.0
 rotation_smoothing_enabled = true
@@ -325,6 +325,7 @@ texture = ExtResource("9_myilm")
 script = ExtResource("12_dhr8q")
 player = NodePath("../Player")
 target = NodePath("")
+radius = 300.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Destination"]
 offset_left = -85.18527
@@ -420,12 +421,22 @@ position = Vector2(1065, 85.00001)
 scale = Vector2(0.475, 0.475)
 texture = ExtResource("9_4hog4")
 
-[node name="Minimap Planet" type="Node2D" parent="HUD/Minimap"]
+[node name="Minimap Planet" type="Node2D" parent="HUD/Minimap" node_paths=PackedStringArray("targetMarker")]
 visible = false
+script = ExtResource("10_dhr8q")
+targetMarker = NodePath("../../../Destination")
 
 [node name="Sprite2D" type="Sprite2D" parent="HUD/Minimap/Minimap Planet"]
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("9_4hog4")
+
+[node name="Button" type="Button" parent="HUD/Minimap/Minimap Planet"]
+offset_left = -10.526123
+offset_top = -10.526337
+offset_right = 10.526123
+offset_bottom = 10.526306
+focus_mode = 0
+flat = true
 
 [node name="HappyFace" type="Sprite2D" parent="HUD/Minimap"]
 position = Vector2(-40, 21.052612)
@@ -453,3 +464,4 @@ autoplay = "reveal"
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="land"]
 [connection signal="pressed" from="HUD/Mission/Button" to="HUD" method="_on_button_pressed"]
 [connection signal="pressed" from="HUD/Open/Button" to="HUD" method="open"]
+[connection signal="pressed" from="HUD/Minimap/Minimap Planet/Button" to="HUD/Minimap/Minimap Planet" method="_on_button_pressed"]

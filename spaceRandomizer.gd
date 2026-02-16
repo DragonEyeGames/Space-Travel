@@ -37,8 +37,14 @@ func spawn_in_circle():
 
 		if valid:
 			positions.append(pos)
+			print(pos)
 			var instance = scene_to_spawn.instantiate()
 			add_child(instance)
 			instance.global_position = pos
 			instance.planetType=planetsInSystem[0]
 			planetsInSystem.remove_at(0)
+			var newMini=$"HUD/Minimap/Minimap Planet".duplicate()
+			$HUD/Minimap.add_child(newMini)
+			newMini.position=pos/100
+			#newMini.position=Vector2.ZERO
+			newMini.visible=true

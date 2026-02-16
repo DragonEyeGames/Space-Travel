@@ -3,6 +3,7 @@ var speed:=0.0
 var speedModifier=3;
 var canMove=true
 @export var darkness: CanvasLayer
+@export var miniMe: Node2D
 func _physics_process(delta: float) -> void:
 	if(canMove):
 		if(Input.is_action_pressed("Accelerate")):
@@ -23,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed * speedModifier
 	move_and_slide()
 	calculateBoosters()
+	miniMe.position=global_position/100
 
 func calculateBoosters():
 	for child in $"Engine Effects".get_children():

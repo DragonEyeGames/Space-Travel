@@ -48,3 +48,4 @@ func _ready() -> void:
 func landed():
 	WorldManager.planetScheme=$Land.modulate
 	WorldManager.planetType=planetType
+	get_tree().change_scene_to_file("res://PlanetGrounds/planet01.tscn")

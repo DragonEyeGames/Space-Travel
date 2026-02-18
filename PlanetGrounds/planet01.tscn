@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bx0mj5kiv0jf2"]
+[gd_scene load_steps=20 format=4 uid="uid://bx0mj5kiv0jf2"]
 
 [ext_resource type="Script" uid="uid://2suktm6e3nhq" path="res://PlanetGrounds/player.gd" id="1_0m6nl"]
 [ext_resource type="Script" uid="uid://vs2824ctsl7d" path="res://PlanetGrounds/planetWalkable.gd" id="1_0n52y"]
@@ -9,6 +9,10 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_ngxbl"]
 atlas = ExtResource("1_peuco")
 region = Rect2(0, 53, 32, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i30p7"]
+atlas = ExtResource("1_peuco")
+region = Rect2(0, 6, 32, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0m6nl"]
 atlas = ExtResource("1_peuco")
@@ -50,7 +54,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i30p7")
+}],
+"loop": false,
+"name": &"turn",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -483,7 +495,7 @@ sources/0 = SubResource("TileSetAtlasSource_0n52y")
 [node name="Planet" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_0n52y")
-newModulate = Color(0.59398526, 0.30245218, 0.9324867, 1)
+newModulate = Color(0.97576016, 0.12877625, 0.8930036, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 floor_snap_length = 10.0
@@ -491,7 +503,7 @@ script = ExtResource("1_0m6nl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_i30p7")
-animation = &"idle"
+animation = &"turn"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -511,3 +523,5 @@ tile_set = SubResource("TileSet_exg5y")
 material = ExtResource("4_0n52y")
 tile_map_data = PackedByteArray("AAAIAAEAAAADAAIAAAAJAAAAAAAEAAEAAAAJAAEAAAAEAAIAAAAKAAAAAAADAAIAAAALAP//AAAEAAEAAAALAAAAAAAEAAIAAAAMAP//AAADAAIAAAANAP7/AAAEAAEAAAANAP//AAAEAAIAAAA=")
 tile_set = SubResource("TileSet_exg5y")
+
+[connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]

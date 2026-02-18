@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	calculateBoosters()
 	miniMe.position=global_position/100
+	miniMe.rotation=rotation
 
 func calculateBoosters():
 	for child in $"Engine Effects".get_children():
@@ -70,3 +71,4 @@ func land(area: Area2D) -> void:
 	darkness.conceal()
 	await get_tree().create_timer(.3).timeout
 	await get_tree().process_frame
+	area.get_parent().landed()

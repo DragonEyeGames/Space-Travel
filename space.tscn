@@ -444,6 +444,11 @@ position = Vector2(-40, 21.052612)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("10_myilm")
 
+[node name="Polygon2D" type="Polygon2D" parent="HUD/Minimap/HappyFace"]
+position = Vector2(0, 52.63158)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-210.52734, -157.89453, -105.26172, -210.52637, 0, -210.52637, 105.26172, -210.52637, 210.52734, -157.89502, 210.52734, -315.78955, 0, -473.68408, -210.52734, -315.78955)
+
 [node name="Needle" type="Polygon2D" parent="HUD"]
 position = Vector2(1068, 563)
 scale = Vector2(0.475, 0.475)

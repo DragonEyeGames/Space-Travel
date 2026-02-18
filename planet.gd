@@ -44,3 +44,7 @@ func _ready() -> void:
 		scale = Vector2(.5, .5)
 		$Base.modulate=Color(randf(), randf(), randf())
 		$Land.modulate=Color(randf(), randf(), randf())
+		
+func landed():
+	WorldManager.planetScheme=$Land.modulate
+	WorldManager.planetType=planetType

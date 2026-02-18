@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdps5pk14doe8"]
+[gd_scene load_steps=22 format=3 uid="uid://cdps5pk14doe8"]
 
 [ext_resource type="Script" uid="uid://cyxkf8idr8hub" path="res://spaceRandomizer.gd" id="1_myilm"]
 [ext_resource type="PackedScene" uid="uid://56jy1f8ocvl2" path="res://planet.tscn" id="2_1vxpe"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dm0y2nmvr7se8" path="res://DustSmoke.png" id="10_4hog4"]
 [ext_resource type="Script" uid="uid://emwqgb31kdg8" path="res://miniPlanet.gd" id="10_dhr8q"]
 [ext_resource type="Texture2D" uid="uid://cafn2nql4y28l" path="res://HappyFace.png" id="10_myilm"]
+[ext_resource type="Script" uid="uid://b4x1wg5ub8x4e" path="res://compass.gd" id="12_betvx"]
 [ext_resource type="Script" uid="uid://bovhedej5g57c" path="res://destination.gd" id="12_dhr8q"]
 [ext_resource type="Script" uid="uid://cprc2sq25l2om" path="res://hud.gd" id="13_betvx"]
 [ext_resource type="Script" uid="uid://b3p2m04wk7cb5" path="res://darkness.gd" id="14_7ltla"]
@@ -442,6 +443,73 @@ flat = true
 position = Vector2(-40, 21.052612)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("10_myilm")
+
+[node name="Needle" type="Polygon2D" parent="HUD"]
+position = Vector2(1068, 563)
+scale = Vector2(0.475, 0.475)
+color = Color(0.7943986, 3.2247603e-06, 9.62615e-07, 1)
+polygon = PackedVector2Array(-25.263184, -14.736816, -6.315918, -101.05261, 23.157959, -12.631592)
+
+[node name="Needle2" type="Polygon2D" parent="HUD"]
+position = Vector2(1068, 563)
+scale = Vector2(0.475, 0.475)
+color = Color(0.57700837, 0.5770084, 0.57700837, 1)
+polygon = PackedVector2Array(-25.263184, -14.736816, 0, 65.26318, 23.157959, -12.631592)
+
+[node name="Compass" type="Sprite2D" parent="HUD" node_paths=PackedStringArray("player")]
+self_modulate = Color(0.27752772, 0.27752772, 0.27752772, 1)
+z_index = -1
+position = Vector2(1068, 563)
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("9_4hog4")
+script = ExtResource("12_betvx")
+player = NodePath("../../Player")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/Compass"]
+offset_left = -25.263159
+offset_top = -136.84212
+offset_right = 14.736841
+offset_bottom = -96.84212
+pivot_offset = Vector2(18.947266, 21.052612)
+theme_override_font_sizes/normal_font_size = 29
+text = "N"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HUD/Compass"]
+offset_left = -21.052631
+offset_top = 80.0
+offset_right = 18.947369
+offset_bottom = 120.0
+pivot_offset = Vector2(21.052734, 21.052612)
+theme_override_font_sizes/normal_font_size = 29
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HUD/Compass"]
+offset_left = 71.57895
+offset_top = -25.26316
+offset_right = 111.57895
+offset_bottom = 14.736839
+pivot_offset = Vector2(21.052734, 21.052734)
+theme_override_font_sizes/normal_font_size = 29
+text = "E
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="HUD/Compass"]
+offset_left = -128.42105
+offset_top = -25.26316
+offset_right = -88.42105
+offset_bottom = 14.736839
+pivot_offset = Vector2(21.052734, 21.052734)
+theme_override_font_sizes/normal_font_size = 29
+text = "W
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Darkness" type="CanvasLayer" parent="."]
 script = ExtResource("14_7ltla")

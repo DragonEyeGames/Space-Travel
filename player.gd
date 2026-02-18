@@ -7,19 +7,19 @@ var canMove=true
 func _physics_process(delta: float) -> void:
 	if(canMove):
 		if(Input.is_action_pressed("Accelerate")):
-			speed+=delta*20
+			speed+=delta*30
 			if(speed>100):
 				speed=100
 		else:
 			speed*=.99
 		if(Input.is_action_pressed("Decelerate")):
-			speed-=delta*25
+			speed-=delta*30
 			if(speed<0):
 				speed=0
 		if(Input.is_action_pressed("Left")):
-			rotation-=delta*5
+			rotation-=delta*2.5
 		if(Input.is_action_pressed("Right")):
-			rotation+=delta*5
+			rotation+=delta*2.5
 	var direction = Vector2.UP.rotated(rotation)
 	velocity = direction * speed * speedModifier
 	move_and_slide()
